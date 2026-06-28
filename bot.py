@@ -6,7 +6,8 @@ import re
 import json
 import google.generativeai as genai
 
-# Конфигурация
+# === НАСТРОЙКИ ===
+MODEL_NAME = 'gemini-1.5-flash' # Поставь ту, которая у тебя работает (1.5-flash или 2.0-flash-exp)
 TG_TOKEN = os.environ.get("TG_TOKEN")
 TG_CHANNEL = os.environ.get("TG_CHANNEL")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -19,16 +20,7 @@ RSS_FEEDS = [
     "https://ru.beincrypto.com/news/feed/"
 ]
 
-def clean_html(text):
-    """Полная очистка текста от грехов ИИ и лишних тегов"""
-    text = text.replace('**', '') # ИИ обожает ставить звездочки, убираем
-    text = text.replace('`', '')
-    # Убираем все теги, кроме разрешенных b, i
-    text = re.sub(r'<(?!/?(b|i)\b)[^>]+>', '', text)
-    return text
-
 def extract_image(entry):
-    """Поиск картинки в разных полях новости"""
     img = None
     if 'media_content' in entry and entry.media_content:
         img = entry.media_content[0]['url']
@@ -40,80 +32,83 @@ def extract_image(entry):
         if match: img = match.group(1)
     return img
 
-def generate_post(news_text):
-    """Генерация текста через ИИ"""
-    # Используем модель gemini-1.5-flash (самая стабильная сейчас)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+def generate_post(news_title, news_text):
+    """Генерирует только ТЕКСТ поста без HTML тегов"""
+    model = genai.GenerativeModel(MODEL_NAME)
     
     prompt = f"""
-    Ты — топовый редактор канала "КриптоДзен | Tech & News". 
-    Перепиши эту новость: {news_text}
+    Ты редактор КриптоДзен. Перепиши новость кратко и хайпово.
+    Заголовок новости: {news_title}
+    Текст: {news_text}
     
-    Требования:
-    1. Начни с жирного заголовка: <b>ЗАГОЛОВОК</b>
-    2. Кратко и хайпово расскажи суть (3-5 предложений).
-    3. Используй эмодзи.
-    4. В конце добавь хештеги.
-    5. Используй ТОЛЬКО HTML теги <b> и <i>. Никаких звездочек!
+    Правила:
+    1. Пиши ТОЛЬКО текст поста. 
+    2. НЕ используй жирный шрифт, курсив, звездочки или решетки.
+    3. Ограничься 3-5 предложениями. 
+    4. Добавь подходящие эмодзи и 2-3 хештега в конце.
     """
     
     response = model.generate_content(prompt)
     return response.text.strip()
 
-def send_telegram(post_html, image_url, news_link):
-    """Отправка в Telegram"""
+def send_telegram(clean_text, title, image_url, news_link):
+    """Формирует HTML и отправляет в TG"""
+    
+    # Сами формируем правильный HTML. Текст от ИИ вставляем как есть.
+    # Очищаем заголовок от возможных спецсимволов HTML
+    safe_title = title.replace('<', '&lt;').replace('>', '&gt;')
+    
+    full_post = f"<b>🔥 {safe_title.upper()}</b>\n\n{clean_text}"
+    
     reply_markup = {"inline_keyboard": [[{"text": "🔗 Читать оригинал", "url": news_link}]]}
-    post_html = clean_html(post_html)
+
+    payload = {
+        "chat_id": TG_CHANNEL,
+        "parse_mode": "HTML",
+        "reply_markup": json.dumps(reply_markup)
+    }
 
     if image_url:
-        print(f"Отправляем фото: {image_url}")
         url = f"https://api.telegram.org/bot{TG_TOKEN}/sendPhoto"
-        data = {
-            "chat_id": TG_CHANNEL,
-            "photo": image_url,
-            "caption": post_html[:1024],
-            "parse_mode": "HTML",
-            "reply_markup": json.dumps(reply_markup)
-        }
+        payload["photo"] = image_url
+        payload["caption"] = full_post[:1024]
     else:
-        print("Картинка не найдена, отправляем только текст...")
         url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-        data = {
-            "chat_id": TG_CHANNEL,
-            "text": post_html[:4096],
-            "parse_mode": "HTML",
-            "reply_markup": json.dumps(reply_markup),
-            "disable_web_page_preview": True
-        }
+        payload["text"] = full_post[:4096]
+        payload["disable_web_page_preview"] = True
     
-    res = requests.post(url, data=data)
+    res = requests.post(url, data=payload)
     result = res.json()
+    
     if result.get("ok"):
-        print("✅ ПОСТ УСПЕШНО ОТПРАВЛЕН!")
+        print("✅ ПОСТ ОПУБЛИКОВАН!")
     else:
-        print(f"❌ ОШИБКА TELEGRAM: {result}")
+        # Если всё же ошибка в HTML, шлем просто текст без тегов
+        print(f"Ошибка HTML, шлем plain text. Ошибка: {result.get('description')}")
+        payload.pop("parse_mode", None)
+        if image_url:
+            payload["caption"] = f"{title}\n\n{clean_text}"[:1024]
+        else:
+            payload["text"] = f"{title}\n\n{clean_text}"[:4096]
+        requests.post(url, data=payload)
 
 if __name__ == "__main__":
-    print("--- ЗАПУСК БОТА ---")
-    url = random.choice(RSS_FEEDS)
-    print(f"Читаем ленту: {url}")
-    feed = feedparser.parse(url)
-    
-    if feed.entries:
-        item = random.choice(feed.entries[:5])
-        print(f"Выбрана новость: {item.title}")
-        
-        img = extract_image(item)
-        raw_text = f"{item.title}. {item.get('description', '')}"
-        raw_text = re.sub(r'<[^>]+>', '', raw_text) # чистим от мусора перед ИИ
-        
-        print("Запрос к ИИ...")
-        try:
-            final_post = generate_post(raw_text)
-            print("Текст сгенерирован!")
-            send_telegram(final_post, img, item.link)
-        except Exception as e:
-            print(f"❌ Ошибка ИИ: {e}")
-    else:
-        print("❌ Не удалось получить новости (лента пуста).")
-    print("--- РАБОТА ЗАВЕРШЕНА ---")
+    print(f"--- СТАРТ (Модель: {MODEL_NAME}) ---")
+    try:
+        source = random.choice(RSS_FEEDS)
+        feed = feedparser.parse(source)
+        if feed.entries:
+            item = random.choice(feed.entries[:5])
+            print(f"Новость: {item.title}")
+            
+            img = extract_image(item)
+            # Чистим описание от HTML-мусора
+            raw_description = re.sub(r'<[^>]+>', '', item.get('description', ''))
+            
+            ai_text = generate_post(item.title, raw_description)
+            send_telegram(ai_text, item.title, img, item.link)
+        else:
+            print("Лента пуста")
+    except Exception as e:
+        print(f"Критическая ошибка: {e}")
+    print("--- КОНЕЦ ---")

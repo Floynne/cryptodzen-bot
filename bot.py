@@ -6,7 +6,7 @@ import re
 import json
 import google.generativeai as genai
 
-# Настройки
+# Конфигурация
 TG_TOKEN = os.environ.get("TG_TOKEN")
 TG_CHANNEL = os.environ.get("TG_CHANNEL")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -19,61 +19,64 @@ RSS_FEEDS = [
     "https://ru.beincrypto.com/news/feed/"
 ]
 
+def clean_html(text):
+    """Полная очистка текста от грехов ИИ и лишних тегов"""
+    text = text.replace('**', '') # ИИ обожает ставить звездочки, убираем
+    text = text.replace('`', '')
+    # Убираем все теги, кроме разрешенных b, i
+    text = re.sub(r'<(?!/?(b|i)\b)[^>]+>', '', text)
+    return text
+
 def extract_image(entry):
-    if 'media_content' in entry:
-        for media in entry.media_content:
-            if 'url' in media: return media['url']
-    if 'enclosures' in entry:
-        for enc in entry.enclosures:
-            if 'href' in enc: return enc['href']
-    content = entry.get('description', '') + str(entry.get('content', ''))
-    match = re.search(r'src=["\'](https?://[^"\']+\.(?:jpg|jpeg|png|webp))["\']', content, re.IGNORECASE)
-    return match.group(1) if match else None
+    """Поиск картинки в разных полях новости"""
+    img = None
+    if 'media_content' in entry and entry.media_content:
+        img = entry.media_content[0]['url']
+    elif 'enclosures' in entry and entry.enclosures:
+        img = entry.enclosures[0]['href']
+    if not img:
+        content = entry.get('description', '') + str(entry.get('content', ''))
+        match = re.search(r'src=["\'](https?://[^"\']+\.(?:jpg|jpeg|png|webp))["\']', content, re.IGNORECASE)
+        if match: img = match.group(1)
+    return img
 
 def generate_post(news_text):
-    # Пытаемся использовать Flash, если нет - Pro
-    model_name = 'gemini-2.5-flash' 
-    model = genai.GenerativeModel(model_name)
+    """Генерация текста через ИИ"""
+    # Используем модель gemini-1.5-flash (самая стабильная сейчас)
+    model = genai.GenerativeModel('gemini-1.5-flash')
     
     prompt = f"""
-    Ты — ИИ-автор канала "КриптоДзен | Tech & News". 
-    Твоя задача: превратить скучную новость в захватывающий пост.
-    Новость: {news_text}
+    Ты — топовый редактор канала "КриптоДзен | Tech & News". 
+    Перепиши эту новость: {news_text}
     
-    Правила:
-    1. Сделай КРУТОЙ заголовок (используй <b>текст</b>).
-    2. Напиши суть новости в 3-4 предложениях.
+    Требования:
+    1. Начни с жирного заголовка: <b>ЗАГОЛОВОК</b>
+    2. Кратко и хайпово расскажи суть (3-5 предложений).
     3. Используй эмодзи.
-    4. В конце добавь 2-3 хештега.
-    5. Используй ТОЛЬКО HTML (<b>, <i>). Не используй символы ** или # для заголовков.
-    6. Не пиши ничего, кроме самого текста поста.
+    4. В конце добавь хештеги.
+    5. Используй ТОЛЬКО HTML теги <b> и <i>. Никаких звездочек!
     """
     
-    try:
-        response = model.generate_content(prompt)
-        return response.text.strip()
-    except Exception as e:
-        print(f"Ошибка модели {model_name}, пробуем запасную...")
-        model = genai.GenerativeModel('gemini-pro') # Запасной вариант
-        response = model.generate_content(prompt)
-        return response.text.strip()
+    response = model.generate_content(prompt)
+    return response.text.strip()
 
 def send_telegram(post_html, image_url, news_link):
-    reply_markup = {"inline_keyboard": [[{"text": "🔗 Читать источник", "url": news_link}]]}
-    
-    # Очистка текста от лишних символов, которые могут ломать HTML Telegram
-    post_html = post_html.replace('**', '').replace('`', '')
+    """Отправка в Telegram"""
+    reply_markup = {"inline_keyboard": [[{"text": "🔗 Читать оригинал", "url": news_link}]]}
+    post_html = clean_html(post_html)
 
     if image_url:
+        print(f"Отправляем фото: {image_url}")
         url = f"https://api.telegram.org/bot{TG_TOKEN}/sendPhoto"
         data = {
             "chat_id": TG_CHANNEL,
             "photo": image_url,
-            "caption": post_html[:1024], # Лимит Telegram для подписей
+            "caption": post_html[:1024],
             "parse_mode": "HTML",
             "reply_markup": json.dumps(reply_markup)
         }
     else:
+        print("Картинка не найдена, отправляем только текст...")
         url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
         data = {
             "chat_id": TG_CHANNEL,
@@ -84,17 +87,33 @@ def send_telegram(post_html, image_url, news_link):
         }
     
     res = requests.post(url, data=data)
-    print("Результат отправки:", res.json())
+    result = res.json()
+    if result.get("ok"):
+        print("✅ ПОСТ УСПЕШНО ОТПРАВЛЕН!")
+    else:
+        print(f"❌ ОШИБКА TELEGRAM: {result}")
 
 if __name__ == "__main__":
-    feed = feedparser.parse(random.choice(RSS_FEEDS))
+    print("--- ЗАПУСК БОТА ---")
+    url = random.choice(RSS_FEEDS)
+    print(f"Читаем ленту: {url}")
+    feed = feedparser.parse(url)
+    
     if feed.entries:
         item = random.choice(feed.entries[:5])
-        img = extract_image(item)
-        text = f"{item.title}. {item.description}"
-        # Очистка от HTML тегов перед генерацией
-        text = re.sub(r'<[^>]+>', '', text)
+        print(f"Выбрана новость: {item.title}")
         
-        print("Генерируем контент...")
-        final_post = generate_post(text)
-        send_telegram(final_post, img, item.link)
+        img = extract_image(item)
+        raw_text = f"{item.title}. {item.get('description', '')}"
+        raw_text = re.sub(r'<[^>]+>', '', raw_text) # чистим от мусора перед ИИ
+        
+        print("Запрос к ИИ...")
+        try:
+            final_post = generate_post(raw_text)
+            print("Текст сгенерирован!")
+            send_telegram(final_post, img, item.link)
+        except Exception as e:
+            print(f"❌ Ошибка ИИ: {e}")
+    else:
+        print("❌ Не удалось получить новости (лента пуста).")
+    print("--- РАБОТА ЗАВЕРШЕНА ---")

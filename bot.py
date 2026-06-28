@@ -7,10 +7,14 @@ import json
 import google.generativeai as genai
 
 # === НАСТРОЙКИ ===
-MODEL_NAME = 'gemini-2.5-flash' 
+MODEL_NAME = 'gemini-2.0-flash' 
 TG_TOKEN = os.environ.get("TG_TOKEN")
 TG_CHANNEL = os.environ.get("TG_CHANNEL")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
+# Проверка ключей
+if not GEMINI_API_KEY:
+    raise ValueError("ОШИБКА: Переменная GEMINI_API_KEY не задана!")
 
 genai.configure(api_key=GEMINI_API_KEY)
 
@@ -31,40 +35,35 @@ def save_posted_link(link):
         f.write(link + "\n")
 
 def generate_post(news_title, news_text):
+    """Генерирует пост как экспертный аналитик"""
     model = genai.GenerativeModel(MODEL_NAME)
     
-    # Промпт экспертного уровня
     prompt = f"""
-    Ты — профессиональный крипто-журналист и тех-аналитик канала "КриптоДзен | Tech & News".
-    Твоя задача: превратить новость в захватывающий лонгрид.
-    
-    Новость: {news_title}
+    Ты — топовый эксперт канала "КриптоДзен | Tech & News".
+    Твоя задача: написать вовлекающий пост по новости.
+    Заголовок: {news_title}
     Детали: {news_text}
     
-    Твоя структура поста:
-    1. Громкий заголовок (не используй теги, просто текст).
-    2. Вступление: захвати внимание читателя.
-    3. Суть: подробно, но понятно (2-3 абзаца).
-    4. Аналитический взгляд: что это значит для индустрии/рынка?
-    5. Вывод/Итог.
+    Твоя структура:
+    1. Захватывающий заголовок (без тегов).
+    2. Основная мысль (3-4 предложения).
+    3. Аналитический взгляд: почему это важно для рынка?
+    4. Итог (один вывод).
     
-    ТРЕБОВАНИЯ К ФОРМАТУ:
-    - Текст должен быть информативным, глубоким (не поверхностным).
-    - БЕЗ HTML-тегов в тексте (я добавлю их сам в коде).
-    - В конце добавь список хештегов (например: #Крипто #Tech #Новости #Blockchain).
+    ВАЖНО:
+    - Пиши ТОЛЬКО текст. 
+    - БЕЗ HTML-тегов, БЕЗ **звездочек**, БЕЗ #решеток внутри текста.
+    - В самом конце добавь 2-3 хештега.
     """
     
     response = model.generate_content(prompt)
     return response.text.strip()
 
-def send_telegram(ai_text, title, image_url, news_link):
-    # Разделяем заголовок и текст
-    lines = ai_text.split('\n')
-    header = f"<b>🚀 {title.upper()}</b>"
-    body = "\n".join(lines[1:]) # Все остальное после заголовка
-    
-    # Формируем красивый HTML
-    full_post = f"{header}\n\n{body}"
+def send_telegram(clean_text, title, image_url, news_link):
+    """Формирует пост и отправляет в ТГ"""
+    # Добавляем жирный заголовок в коде Python
+    safe_title = title.replace('<', '&lt;').replace('>', '&gt;')
+    full_post = f"<b>🔥 {safe_title.upper()}</b>\n\n{clean_text}"
     
     reply_markup = {"inline_keyboard": [[{"text": "🔗 Читать оригинал", "url": news_link}]]}
     payload = {
@@ -81,24 +80,38 @@ def send_telegram(ai_text, title, image_url, news_link):
         payload.update({"text": full_post[:4096], "disable_web_page_preview": False})
     
     res = requests.post(url, data=payload)
-    print(res.json())
+    result = res.json()
+    
+    if result.get("ok"):
+        print("✅ ПОСТ ОПУБЛИКОВАН!")
+    else:
+        print(f"❌ ОШИБКА TELEGRAM: {result}")
 
 if __name__ == "__main__":
+    print(f"--- ЗАПУСК (Модель: {MODEL_NAME}) ---")
     posted_links = load_posted_links()
+    
+    # Выбираем случайную ленту
     source = random.choice(RSS_FEEDS)
     feed = feedparser.parse(source)
+    
+    # Берем только новые новости
     new_entries = [e for e in feed.entries if e.link not in posted_links]
     
     if new_entries:
-        item = new_entries[0]
-        print(f"Публикуем: {item.title}")
+        item = new_entries[0] # Самая свежая
+        print(f"Новость: {item.title}")
         
         img = None
         if 'media_content' in item: img = item.media_content[0]['url']
         
+        # Чистим текст от HTML перед отправкой в ИИ
         raw_desc = re.sub(r'<[^>]+>', '', item.get('description', ''))
-        # Передаем подробную информацию для генерации
-        ai_text = generate_post(item.title, raw_desc)
         
+        ai_text = generate_post(item.title, raw_desc)
         send_telegram(ai_text, item.title, img, item.link)
+        
         save_posted_link(item.link)
+        print("--- УСПЕШНО ---")
+    else:
+        print("Нет новых новостей для публикации.")

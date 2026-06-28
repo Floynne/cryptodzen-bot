@@ -2,8 +2,8 @@ name: CryptoDzen Bot
 
 on:
   schedule:
-    - cron: '0 * * * *' 
-  workflow_dispatch: 
+    - cron: '0 * * * *' # Это и есть таймер на каждый час
+  workflow_dispatch: # Это кнопка ручного запуска
 
 jobs:
   post_news:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Обновили версию
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |

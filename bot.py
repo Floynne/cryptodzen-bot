@@ -43,7 +43,7 @@ def extract_image(entry):
 def generate_post(news_text):
     """Генерация текста через ИИ"""
     # Используем модель gemini-1.5-flash (самая стабильная сейчас)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
     prompt = f"""
     Ты — топовый редактор канала "КриптоДзен | Tech & News". 

@@ -7,7 +7,7 @@ import json
 import google.generativeai as genai
 
 # === НАСТРОЙКИ ===
-MODEL_NAME = 'gemini-1.5-flash' # Поставь ту, которая у тебя работает (1.5-flash или 2.0-flash-exp)
+MODEL_NAME = 'gemini-2.5-flash' # Поставь ту, которая у тебя работает (1.5-flash или 2.0-flash-exp)
 TG_TOKEN = os.environ.get("TG_TOKEN")
 TG_CHANNEL = os.environ.get("TG_CHANNEL")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")

@@ -62,3 +62,4 @@ https://habr.com/ru/news/1057244/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1057744/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1057744
 https://habr.com/ru/news/1057892/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1057892
 https://forklog.com/cryptorium/chto-takoe-federativnye-sistemy-i-fediverse
+https://forklog.com/circle-poluchila-finalnoe-odobrenie-na-trastovyj-bank

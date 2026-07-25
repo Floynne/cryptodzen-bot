@@ -168,3 +168,4 @@ https://habr.com/ru/news/1062820/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/companies/bothub/news/1062834/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1062834
 https://habr.com/ru/news/1062816/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1062816
 https://forklog.com/news/vzlom-dex-ostium-likvidatsiya-kratos-i-drugie-sobytiya-kiberbezopasnosti
+https://forklog.com/dex-agregator-odos-zakroetsya-posle-chetyreh-let-raboty

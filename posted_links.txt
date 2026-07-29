@@ -198,3 +198,4 @@ https://forklog.com/news/ai/ssha-zapretili-import-kitajskih-robotov-i-invertorov
 https://habr.com/ru/news/1064556/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1064556
 https://forklog.com/news/ai/ii-agent-openai-poluchil-dostup-k-chetyrem-vneshnim-akkauntam
 https://habr.com/ru/news/1064668/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1064668
+https://forklog.com/morgan-stanley-zapustila-etp-na-eth-i-sol

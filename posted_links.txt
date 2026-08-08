@@ -258,3 +258,4 @@ https://forklog.com/news/mediakompaniya-trampa-svernula-kriptovalyutnoe-napravle
 https://habr.com/ru/news/1068128/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1068128
 https://habr.com/ru/news/1068138/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1068138
 https://forklog.com/news/hakery-opustoshili-lightning-uzly-cherez-uyazvimost-v-btcpay
+https://forklog.com/news/v-sharplink-predupredili-ob-ugroze-glavnomu-preimushhestvu-ethereum-nad-bitkoinom

@@ -260,3 +260,4 @@ https://habr.com/ru/news/1068138/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/hakery-opustoshili-lightning-uzly-cherez-uyazvimost-v-btcpay
 https://forklog.com/news/v-sharplink-predupredili-ob-ugroze-glavnomu-preimushhestvu-ethereum-nad-bitkoinom
 https://forklog.com/kimi-k3-vyshla-iz-testovoj-pesochnitsy-i-spisala-otvety-s-github
+https://habr.com/ru/companies/bothub/news/1068246/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1068246

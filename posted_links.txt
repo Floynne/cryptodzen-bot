@@ -264,3 +264,4 @@ https://habr.com/ru/companies/bothub/news/1068246/?utm_source=habrahabr&utm_medi
 https://forklog.com/polzovatel-trezor-lishilsya-sberezhenij-iz-za-fishinga-v-vydache-google
 https://habr.com/ru/news/1068244/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1068244
 https://forklog.com/openai-priostanovila-chast-rabot-nad-modelyu-astra
+https://forklog.com/news/set-bitkoina-razdelilas-iz-za-softforka-bip-110

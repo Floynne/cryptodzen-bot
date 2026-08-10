@@ -278,3 +278,4 @@ https://habr.com/ru/news/1068526/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/companies/bothub/news/1068582/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1068582
 https://forklog.com/news/smi-velikobritaniya-podgotovit-pravila-dlya-tokenizirovannogo-zolota
 https://forklog.com/news/eks-glava-pentagona-otnes-clarity-act-k-sfere-natsbezopasnosti-ssha
+https://forklog.com/news/eksperty-raskryli-detali-vzloma-coinsbuy-na-8-mln

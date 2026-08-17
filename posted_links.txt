@@ -365,3 +365,4 @@ https://habr.com/ru/news/1071078/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/ai/reuters-ssha-potrebuyut-ot-partnerov-vybrat-storonu-v-ii-gonke
 https://habr.com/ru/news/1071200/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1071200
 https://forklog.com/news/quantinuum-i-quanta-obedinyatsya-dlya-masshtabirovaniya-kvantovyh-sistem
+https://forklog.com/qpiai-zapustila-v-indii-proizvodstvo-kvantovyh-protsessorov

@@ -401,3 +401,4 @@ https://habr.com/ru/news/1071454/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/hsbc-i-standard-chartered-proveli-pervuyu-tranzaktsiyu-v-blokchejn-sisteme-swift
 https://forklog.com/news/ibm-prodvinulas-v-masshtabirovanii-kvantovyh-kompyuterov
 https://forklog.com/exclusive/bunkery-dlya-kontsa-sveta-zachem-tehnoelita-stroit-avtonomnyj-mir
+https://forklog.com/hype-vyros-na-20-posle-zayavleniya-trampa-o-hyperliquid

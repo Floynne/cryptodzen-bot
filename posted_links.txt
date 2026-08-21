@@ -413,3 +413,4 @@ https://habr.com/ru/news/1072698/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1072674/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1072674
 https://forklog.com/bitdeer-zaklyuchila-ii-kontrakt-na-400-mln
 https://forklog.com/news/ai/kitaj-poluchil-dostup-k-chipam-nvidia-cherez-zarubezhnye-data-tsentry
+https://forklog.com/trejder-poteryal-24-mln-na-shorte-ethereum-za-12-sekund

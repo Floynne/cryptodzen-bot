@@ -431,3 +431,4 @@ https://habr.com/ru/news/1073060/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1072942/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1072942
 https://forklog.com/news/fishingovaya-ataka-na-885-000-kriptoinvestorov-kampaniya-protiv-rust-razrabotchikov-i-drugie-sobytiya-kiberbezopasnosti
 https://forklog.com/coinkite-vypustila-obnovlenie-coldcard-posle-ataki-na-polzovatelej-koshelkov
+https://forklog.com/news/ai/chatgpt-nauchili-otpravlyat-soobshheniya-cherez-apple-messages

@@ -462,3 +462,4 @@ https://habr.com/ru/news/1073688/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1073722/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1073722
 https://habr.com/ru/companies/ussc/news/1073812/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1073812
 https://forklog.com/fasset-privlekla-68-mln-pri-otsenke-v-1-mlrd
+https://forklog.com/smi-v-hugging-face-dopustili-prodazhu-biznesa-za-13-mlrd

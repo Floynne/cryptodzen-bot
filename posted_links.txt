@@ -472,3 +472,4 @@ https://habr.com/ru/news/1074008/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1073938/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1073938
 https://habr.com/ru/companies/flant/news/1073922/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1073922
 https://forklog.com/zashhita-voennogo-ssha-osporila-uchastie-cftc-v-dele-polymarket
+https://forklog.com/news/ai/ii-bum-pochti-udvoil-obem-gazovyh-proektov-dlya-data-tsentrov-v-ssha

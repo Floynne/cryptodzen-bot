@@ -529,3 +529,4 @@ https://habr.com/ru/companies/bothub/news/1078652/?utm_source=habrahabr&utm_medi
 https://habr.com/ru/news/1078552/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1078552
 https://forklog.com/news/ataka-na-polzovatelej-x-obnaruzhenie-shpionskogo-po-pegasus-v-serbii-i-drugie-sobytiya-kiberbezopasnosti
 https://forklog.com/news/ai/openai-priznala-wiki-intsident-s-agentami-i-poobeshhala-novye-pravila-raskrytiya
+https://forklog.com/pineapple-financial-perenesla-na-blokchejn-ipotechnye-zapisi-na-1-mlrd

@@ -545,3 +545,4 @@ https://habr.com/ru/news/1080202/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/indiya-potrebovala-zablokirovat-15-kriptoplatform
 https://forklog.com/paypal-zapustil-platformu-dlya-vypuska-stejblkoinov
 https://forklog.com/smi-germaniya-podgotovila-otmenu-nalogovoj-lgoty-dlya-kriptoinvestorov
+https://forklog.com/news/issledovateli-vdvoe-sokratili-vychislitelnuyu-otsenku-kvantovoj-ataki-na-bitkoin-i-ethereum

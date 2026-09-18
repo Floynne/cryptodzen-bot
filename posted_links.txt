@@ -575,3 +575,4 @@ https://habr.com/ru/companies/ggsel/news/1083452/?utm_source=habrahabr&utm_mediu
 https://forklog.com/news/smi-meta-vypustit-ii-ochki-bez-kamery
 https://forklog.com/news/sec-razreshila-ogranichennuyu-torgovlyu-tokenizirovannymi-aktsiyami
 https://forklog.com/cryptorium/chto-takoe-algoritm-shora-i-pochemu-on-ugrozhaet-bitkoinu
+https://forklog.com/news/fiziki-vpervye-zafiksirovali-kvantovyj-skachok-zvuka-v-realnom-vremeni

@@ -582,3 +582,4 @@ https://habr.com/ru/companies/bothub/news/1084032/?utm_source=habrahabr&utm_medi
 https://forklog.com/news/pravoohraniteli-predupredili-o-gruppirovke-soiskatelej-iz-kndr
 https://forklog.com/news/slozhnye-ataki-na-biznes-v-rf-novyj-troyan-pod-android-dlya-krazhi-kriptovalyut-i-drugie-sobytiya-kiberbezopasnosti
 https://forklog.com/mnenie-ii-stal-vygodnee-bitkoina-dlya-vychislitelnoj-infrastruktury
+https://forklog.com/gemini-vzlomala-tri-kompanii-vo-vremya-testa

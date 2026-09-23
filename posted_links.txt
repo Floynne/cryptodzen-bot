@@ -594,3 +594,4 @@ https://forklog.com/news/glava-intel-sprognoziroval-eru-kvantovyh-chipov-gpu-i-c
 https://forklog.com/news/v-ios-prilozhenii-fomopeek-obnaruzhili-stiler-kriptovalyut
 https://habr.com/ru/news/1085056/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1085056
 https://habr.com/ru/companies/runity/news/1085384/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1085384
+https://forklog.com/ionq-uskorila-dekodirovanie-oshibok-dlya-kvantovyh-vychislenij

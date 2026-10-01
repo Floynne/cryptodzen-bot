@@ -620,3 +620,4 @@ https://habr.com/ru/news/1088298/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/companies/selectel/news/1088318/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1088318
 https://habr.com/ru/companies/bothub/news/1088822/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1088822
 https://forklog.com/pritok-v-kriptofondy-dostig-maksimuma-s-nachala-goda-2
+https://forklog.com/news/ai/deepseek-predstavila-alternativu-programmnoj-ekosisteme-nvidia

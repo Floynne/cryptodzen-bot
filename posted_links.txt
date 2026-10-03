@@ -621,3 +621,4 @@ https://habr.com/ru/companies/selectel/news/1088318/?utm_source=habrahabr&utm_me
 https://habr.com/ru/companies/bothub/news/1088822/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1088822
 https://forklog.com/pritok-v-kriptofondy-dostig-maksimuma-s-nachala-goda-2
 https://forklog.com/news/ai/deepseek-predstavila-alternativu-programmnoj-ekosisteme-nvidia
+https://forklog.com/es-vydelil-47-5-mln-evro-na-prototip-kvantovogo-interneta

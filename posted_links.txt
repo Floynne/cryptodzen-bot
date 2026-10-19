@@ -676,3 +676,4 @@ https://habr.com/ru/news/1095678/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/itogi-nedeli-bitkoin-uderzhal-81-000-a-ledger-podtverdila-implanty-v-koshelkah
 https://habr.com/ru/news/1095950/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1095950
 https://forklog.com/startap-tenstorrent-eks-inzhenerov-amd-privlek-1-5-mlrd
+https://forklog.com/news/bitquery-obem-zablokirovannyh-s-2016-goda-kriptoaktivov-dostig-6-4-mlrd

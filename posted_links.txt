@@ -691,3 +691,4 @@ https://habr.com/ru/news/1098290/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/v-slowmist-predupredili-o-riskah-dlya-web3-iz-za-uyazvimostej-php
 https://habr.com/ru/companies/bothub/news/1098764/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1098764
 https://forklog.com/news/bitcoin-core-izmenil-pravila-raskrytiya-uyazvimostej-iz-za-ii
+https://habr.com/ru/news/1098874/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1098874

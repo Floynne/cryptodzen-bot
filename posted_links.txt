@@ -694,3 +694,4 @@ https://forklog.com/news/bitcoin-core-izmenil-pravila-raskrytiya-uyazvimostej-iz
 https://habr.com/ru/news/1098874/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1098874
 https://forklog.com/news/bitmain-canaan-i-f2pool-podderzhali-instrumenty-tether-dlya-avtomatizatsii-majninga
 https://habr.com/ru/news/1098328/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1098328
+https://forklog.com/yuzhnaya-koreya-rasshirit-set-dlya-ispytanij-kvantovoj-svyazi

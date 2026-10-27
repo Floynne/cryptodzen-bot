@@ -707,3 +707,4 @@ https://habr.com/ru/companies/aenix/news/1099798/?utm_source=habrahabr&utm_mediu
 https://forklog.com/openai-predstavila-gpt-6-1-terra
 https://habr.com/ru/news/1100146/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1100146
 https://habr.com/ru/news/1100304/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1100304
+https://forklog.com/news/ai/opera-nauchila-brauzer-zapuskat-ii-bez-oblaka

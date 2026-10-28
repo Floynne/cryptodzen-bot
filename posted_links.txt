@@ -710,3 +710,4 @@ https://habr.com/ru/news/1100304/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://forklog.com/news/ai/opera-nauchila-brauzer-zapuskat-ii-bez-oblaka
 https://forklog.com/janus-henderson-predstavila-fond-na-nasdaq-100-v-blokchejne-stellar
 https://habr.com/ru/news/1100560/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1100560
+https://forklog.com/dtcc-zapustila-servis-tokenizatsii-tsennyh-bumag

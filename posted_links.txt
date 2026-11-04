@@ -727,3 +727,4 @@ https://habr.com/ru/companies/bothub/news/1103366/?utm_source=habrahabr&utm_medi
 https://habr.com/ru/news/1103354/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1103354
 https://habr.com/ru/news/1103426/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1103426
 https://forklog.com/schroders-vyvela-fond-obligatsij-razvivayushhihsya-rynkov-na-solana
+https://forklog.com/svyazannye-so-vzlomom-binance-sredstva-snova-poshli-cherez-thorchain

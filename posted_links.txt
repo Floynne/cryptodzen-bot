@@ -728,3 +728,4 @@ https://habr.com/ru/news/1103354/?utm_source=habrahabr&utm_medium=rss&utm_campai
 https://habr.com/ru/news/1103426/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1103426
 https://forklog.com/schroders-vyvela-fond-obligatsij-razvivayushhihsya-rynkov-na-solana
 https://forklog.com/svyazannye-so-vzlomom-binance-sredstva-snova-poshli-cherez-thorchain
+https://forklog.com/binance-i-deribit-otozvali-api-klyuchi-signalplus-iz-za-ugrozy-bezopasnosti

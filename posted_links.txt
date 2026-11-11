@@ -737,3 +737,4 @@ https://forklog.com/news/itogi-nedeli-pobeda-demokratov-na-vyborah-v-ssha-i-pade
 https://forklog.com/news/v-finlyandii-chastnyj-dom-pereveli-s-teploseti-na-bitkoin-majner
 https://habr.com/ru/articles/1106012/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1106012
 https://forklog.com/news/ai/mask-nazval-claude-opus-5-5-shedevrom-i-priznal-otstavanie-grok-4-8
+https://forklog.com/v-bitcoin-core-raskryli-tri-uyazvimosti-vklyuchaya-opasnuyu-dlya-majnerov

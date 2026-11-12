@@ -739,3 +739,4 @@ https://habr.com/ru/articles/1106012/?utm_source=habrahabr&utm_medium=rss&utm_ca
 https://forklog.com/news/ai/mask-nazval-claude-opus-5-5-shedevrom-i-priznal-otstavanie-grok-4-8
 https://forklog.com/v-bitcoin-core-raskryli-tri-uyazvimosti-vklyuchaya-opasnuyu-dlya-majnerov
 https://habr.com/ru/articles/1106880/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1106880
+https://forklog.com/news/volna-kiberatak-pobudila-yuzhnuyu-koreyu-usilit-zashhitu-kriptobirzh
